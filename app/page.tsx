@@ -22,6 +22,8 @@ import {
 import { useEffect, useState } from 'react';
 import { MdAutoAwesome, MdBolt, MdEdit, MdPerson } from 'react-icons/md';
 import Bg from '../public/img/chat/bg-image.png';
+import Anthropic from '@anthropic-ai/sdk';
+
 
 export default function Chat(props: { apiKeyApp: string }) {
   // Input States
@@ -56,14 +58,17 @@ export default function Chat(props: { apiKeyApp: string }) {
     { color: 'whiteAlpha.600' },
   );
   const handleTranslate = async () => {
-    let apiKey = localStorage.getItem('apiKey');
+    
+    let apiKey = process.env.NEXT_PUBLIC_CLAUDE_KEY
     setInputOnSubmit(inputCode);
+
+    console.log(apiKey);
 
     // Chat post conditions(maximum number of characters, valid message etc.)
     const maxCodeLength = model === 'gpt-4o' ? 700 : 700;
 
     if (!apiKey?.includes('sk-')) {
-      alert('Please enter an API key.');
+      alert('Please enter an API key. This api key');
       return;
     }
 
@@ -87,17 +92,17 @@ export default function Chat(props: { apiKeyApp: string }) {
       apiKey,
     };
 
-    // -------------- Fetch --------------
-    const response = await fetch('./api/chatAPI', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      signal: controller.signal,
-      body: JSON.stringify(body),
+    const anthropic = new Anthropic({
+      apiKey: apiKey, dangerouslyAllowBrowser: true
+    });
+    
+    const response = await anthropic.messages.create({
+      model: "claude-3-5-sonnet-20241022",
+      max_tokens: 1024,
+      messages: [{ role: "user", content: inputCode }],
     });
 
-    if (!response.ok) {
+    if (!response.content) {
       setLoading(false);
       if (response) {
         alert(
@@ -107,7 +112,7 @@ export default function Chat(props: { apiKeyApp: string }) {
       return;
     }
 
-    const data = response.body;
+    const data = response.content[0].text;
 
     if (!data) {
       setLoading(false);
@@ -115,16 +120,12 @@ export default function Chat(props: { apiKeyApp: string }) {
       return;
     }
 
-    const reader = data.getReader();
-    const decoder = new TextDecoder();
     let done = false;
 
     while (!done) {
       setLoading(true);
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      const chunkValue = decoder.decode(value);
-      setOutputCode((prevCode) => prevCode + chunkValue);
+      done = true;
+      setOutputCode(() => data);
     }
 
     setLoading(false);

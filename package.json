@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.31.0",
     "@babel/traverse": "^7.24.6",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
@@ -19,12 +20,14 @@
     "@emotion/styled": "^11.3.0",
     "@heroicons/react": "^2.0.17",
     "@material-tailwind/react": "^1.4.2",
+    "@next/env": "^15.0.2",
     "@tanstack/react-table": "^8.5.15",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@uiw/codemirror-theme-tokyo-night": "^4.19.11",
     "@uiw/react-codemirror": "^4.19.11",
+    "dotenv": "^16.4.5",
     "endent": "^2.1.0",
     "eventsource-parser": "^1.0.0",
     "framer-motion": "^4.1.17",
