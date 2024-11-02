@@ -69,29 +69,3 @@ View <a href="https://horizon-ui.com/chatgpt-ai-template/?ref=readme-horizon-ai-
 
 Horizon AI Template is available in Figma format as well! [Check it out here](https://www.figma.com/community/file/1253038328954459768)! 🎨
 
-### Reporting Issues
-
-We use GitHub Issues as the official bug tracker for the Horizon UI. Here are
-some advices for our users that want to report an issue:
-
-1. Make sure that you are using the latest version of the Horizon AI Template.
-   Check the CHANGELOG from your dashboard on our
-   [CHANGE LOG File](https://github.com/horizon-ui/chatgpt-ai-template/blob/main/CHANGELOG.md?ref=readme-horizon-ai-template-free).
-2. Providing us reproducible steps for the issue will shorten the time it takes
-   for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you
-   encountered the issue might help.
-
----
-
-### Community
-
-Connect with the community! Feel free to ask questions, report issues, and meet new people that already use Horizon AI Template!
-
-💬 [Join the #HorizonUI Discord Community!](https://discord.gg/f6tEKFBd4m)
-
-### Copyright and license
-
-⭐️ [Copyright 2023 Horizon UI ](https://www.horizon-ui.com/?ref=readme-horizon-ai-template-free)
-
-📄 [Horizon UI License](https://horizon-ui.notion.site/End-User-License-Agreement-8fb09441ea8c4c08b60c37996195a6d5)
